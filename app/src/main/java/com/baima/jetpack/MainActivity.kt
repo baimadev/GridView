@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -23,10 +24,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val width = rak_icon_grid.measuredWidth
-        Log.e("xia",width.toString());
-        GridViewHelper(rak_icon_grid)
 
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+
+
+        val linearLayout = findViewById<LinearLayout>(R.id.rak_icon_grid)
+        val width = linearLayout.measuredWidth
+        GridViewHelper(linearLayout)
     }
 
 
