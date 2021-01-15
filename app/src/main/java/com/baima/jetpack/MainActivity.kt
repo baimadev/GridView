@@ -1,12 +1,5 @@
 package com.baima.jetpack
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
-import android.graphics.BitmapFactory
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.util.SparseArray
@@ -16,16 +9,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
-import rx.Observable
-import rx.Scheduler
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,8 +23,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val width = rak_icon_grid.measuredWidth
+        Log.e("xia",width.toString());
         GridViewHelper(rak_icon_grid)
-
 
     }
 

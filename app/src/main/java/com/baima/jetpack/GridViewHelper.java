@@ -23,10 +23,9 @@ public class GridViewHelper {
 
     public GridViewHelper(LinearLayout parent){
         this.parent = parent;
-        Log.e("xia"," constructor");
         inflateView();
-        //measure();
-        //addView();
+        measure();
+        addView();
     }
 
     private void addView() {
@@ -44,12 +43,13 @@ public class GridViewHelper {
     }
 
     private void measure() {
-        float width = parent.getWidth();
+        float width = parent.getMeasuredWidth();
         Log.e("xia","width "+width);
         int i = 0;
         while (i < iconItem.size()) {
-            Log.e("xia","i "+i);
-            float iconWidth = iconItem.get(i).getWidth();
+            View view = iconItem.get(i);
+            view.measure(0,0);
+            float iconWidth = view.getMeasuredWidth();
             if(width > iconWidth){
                 width = width - iconWidth;
                 i++;
@@ -74,17 +74,15 @@ public class GridViewHelper {
 
     private void inflateView(){
         int size = iconArray.length;
-        Log.e("xia",size+" ");
-     //   LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
         for (int i = 0;i<size;i++) {
-//            View view = inflater.inflate(R.layout.rak_icon_item,parent,false);
-//            ImageView imageView =view.findViewById(R.id.rak_icon_image);
-//            TextView textView = view.findViewById(R.id.rak_icon_text);
-//
-//            Drawable drawable = parent.getContext().getDrawable(R.drawable.albatross_icon);
-            //imageView.setImageDrawable(drawable);
-            //textView.setText(iconText[i]);
-            Log.e("xia","width "+0);
+            View view = inflater.inflate(R.layout.rak_icon_item,parent,false);
+            ImageView imageView =view.findViewById(R.id.rak_icon_image);
+            TextView textView = view.findViewById(R.id.rak_icon_text);
+            Drawable drawable = parent.getContext().getDrawable(R.drawable.albatross_icon);
+            imageView.setImageDrawable(drawable);
+            textView.setText(iconText[i]);
             iconItem.add(new LinearLayout(parent.getContext()));
         }
     }
